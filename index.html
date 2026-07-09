@@ -306,6 +306,7 @@
     50%{transform:translate(0,-16px) rotate(2deg);}
   }
   @media (prefers-reduced-motion: reduce){.about-art .back,.about-art .front{animation:none;}}
+
   .about-text p{color:var(--muted);font-size:15.5px;margin-bottom:22px;max-width:520px;}
   .checklist{list-style:none;display:flex;flex-direction:column;gap:14px;}
   .checklist li{display:flex;align-items:center;gap:12px;font-size:14.5px;}
@@ -330,9 +331,10 @@
     border:1px solid var(--border);
     border-radius:14px;
     overflow:hidden;
-    transition:transform 0.2s ease, box-shadow 0.2s ease;
+    cursor:pointer;
+    transition:transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
   }
-  .proj-card:hover{transform:translateY(-4px);box-shadow:0 16px 32px rgba(15,42,46,0.08);}
+  .proj-card:hover,.proj-card:focus-visible{transform:translateY(-4px);box-shadow:0 16px 32px rgba(0,0,0,0.35);border-color:var(--teal);}
   .proj-thumb{
     aspect-ratio:16/10;
     background:linear-gradient(135deg,var(--surface-alt),#101214);
@@ -350,7 +352,7 @@
     color:var(--muted);
   }
   .proj-body{padding:20px 22px;}
-  .proj-body h3{font-size:16px;margin-bottom:8px;}
+  .proj-body h3{font-size:16px;margin-bottom:12px;}
   .proj-body p{font-size:13.5px;color:var(--muted);margin-bottom:14px;}
   .tags{display:flex;gap:8px;flex-wrap:wrap;}
   .tag{
@@ -364,8 +366,74 @@
     font-family:'Space Mono',monospace;
     font-size:11.5px;color:var(--blue);
   }
+  .proj-body .see-more{display:inline-block;margin-top:14px;}
   @media (max-width:820px){.proj-grid{grid-template-columns:1fr;}}
   .view-all{text-align:center;}
+
+  /* PROJECT MODAL */
+  .modal-overlay{
+    position:fixed;inset:0;z-index:200;
+    background:rgba(4,8,8,0.72);
+    backdrop-filter:blur(4px);
+    display:none;
+    align-items:center;justify-content:center;
+    padding:24px;
+  }
+  .modal-overlay.open{display:flex;}
+  .modal-box{
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:18px;
+    max-width:620px;width:100%;
+    max-height:88vh;
+    overflow-y:auto;
+    position:relative;
+    animation:modalIn 0.22s ease;
+  }
+  @keyframes modalIn{
+    from{opacity:0;transform:translateY(14px) scale(0.98);}
+    to{opacity:1;transform:translateY(0) scale(1);}
+  }
+  .modal-close{
+    position:absolute;top:16px;right:16px;z-index:2;
+    width:36px;height:36px;border-radius:10px;
+    background:var(--surface);
+    border:1px solid var(--border);
+    color:var(--ink);
+    display:flex;align-items:center;justify-content:center;
+    cursor:pointer;
+  }
+  .modal-close:hover{border-color:var(--teal);color:var(--teal);}
+  .modal-hero{
+    aspect-ratio:16/9;
+    background:linear-gradient(135deg,var(--surface-alt),#101214);
+    display:flex;align-items:center;justify-content:center;
+    color:var(--teal-deep);
+    border-radius:18px 18px 0 0;
+  }
+  .modal-body{padding:28px 28px 32px;}
+  .modal-body .eyebrow{margin-bottom:8px;}
+  .modal-body h3{font-size:22px;margin-bottom:14px;}
+  .modal-body p{font-size:14.5px;color:var(--muted);margin-bottom:20px;}
+  .modal-body .tags{margin-bottom:22px;}
+  .modal-gallery{
+    display:grid;grid-template-columns:repeat(2,1fr);gap:12px;
+    margin-bottom:22px;
+  }
+  .modal-gallery img{width:100%;height:100%;object-fit:cover;border-radius:10px;display:block;}
+  .modal-gallery .ph{
+    aspect-ratio:4/3;border-radius:10px;
+    border:1.5px dashed var(--border);
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Space Mono',monospace;font-size:11px;color:var(--muted);
+    text-align:center;padding:8px;
+  }
+  .modal-actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:6px;}
+  @media (max-width:520px){
+    .modal-box{max-height:92vh;}
+    .modal-body{padding:22px 20px 26px;}
+    .modal-gallery{grid-template-columns:1fr 1fr;}
+  }
 
   /* SKILLS */
   .skills-wrap{background:var(--surface-alt);}
@@ -625,24 +693,28 @@
       <div class="rule center"></div>
     </div>
     <div class="proj-grid">
-      <div class="proj-card">
+      <div class="proj-card" tabindex="0" role="button" aria-haspopup="dialog"
+           data-link="https://github.com/emanuelekm" data-images=""
+           data-desc="Aplicação desenvolvida de um sistema desktop para gerenciamento de biblioteca, com foco no controle de usuários, acervo e empréstimos.">
         <div class="proj-thumb"><span class="tag-float">01</span>
           <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 13h3"/></svg>
         </div>
         <div class="proj-body">
           <h3>Sistema de Gerenciamento de Biblioteca</h3>
-          <p>Aplicação desenvolvida de um sistema desktop para gerenciamento de biblioteca, com foco no controle de usuários, acervo e empréstimos.</p>
           <div class="tags"><span class="tag">C#</span><span class="tag">SQL</span><span class="tag">MySQL</span></div>
+          <span class="proj-link see-more">Ver detalhes →</span>
         </div>
       </div>
-      <div class="proj-card">
+      <div class="proj-card" tabindex="0" role="button" aria-haspopup="dialog"
+           data-link="https://github.com/emanuelekm" data-images=""
+           data-desc="Solução desenvolvida em n8n que monitora ocorrências, envia notificações, gera protocolos e utiliza Inteligência Artificial para agilizar operações de atendimento e gestão de processos.">
         <div class="proj-thumb"><span class="tag-float">02</span>
           <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a13 13 0 0 1 0 18a13 13 0 0 1 0-18"/></svg>
         </div>
         <div class="proj-body">
           <h3>Automação Inteligente da Gestão de Ocorrências</h3>
-          <p>Solução desenvolvida em n8n que monitora ocorrências, envia notificações, gera protocolos e utiliza Inteligência Artificial para agilizar operações deatendimento e gestão de processos.</p>
           <div class="tags"><span class="tag">N8N</span><span class="tag">Inteligência Artificial</span><span class="tag">Automação</span></div>
+          <span class="proj-link see-more">Ver detalhes →</span>
         </div>
       </div>
     </div>
@@ -702,6 +774,26 @@
   </div>
 </section>
 
+<!-- PROJECT DETAIL MODAL -->
+<div class="modal-overlay" id="projModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal-box">
+    <button class="modal-close" id="modalClose" aria-label="Fechar">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+    <div class="modal-hero" id="modalHero"></div>
+    <div class="modal-body">
+      <span class="eyebrow">projeto</span>
+      <h3 id="modalTitle"></h3>
+      <p id="modalDesc"></p>
+      <div class="tags" id="modalTags"></div>
+      <div class="modal-gallery" id="modalGallery"></div>
+      <div class="modal-actions">
+        <a href="#" id="modalLink" class="btn btn-outline" target="_blank" rel="noopener">Ver no GitHub →</a>
+      </div>
+    </div>
+  </div>
+</div>
+
 <footer>
   <div class="foot-grid">
     <div class="foot-brand">
@@ -733,6 +825,92 @@ stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7
   </div>
   <div class="foot-bottom">© 2025 Emanuele. Todos os direitos reservados.</div>
 </footer>
+
+<script>
+  (function () {
+    var overlay = document.getElementById('projModal');
+    var closeBtn = document.getElementById('modalClose');
+    var heroEl = document.getElementById('modalHero');
+    var titleEl = document.getElementById('modalTitle');
+    var descEl = document.getElementById('modalDesc');
+    var tagsEl = document.getElementById('modalTags');
+    var galleryEl = document.getElementById('modalGallery');
+    var linkEl = document.getElementById('modalLink');
+    var lastFocused = null;
+
+    function openModalFromCard(card) {
+      var title = card.querySelector('h3') ? card.querySelector('h3').textContent : '';
+      var desc = card.getAttribute('data-desc') || '';
+      var tagEls = card.querySelectorAll('.tags .tag');
+      var thumbSvg = card.querySelector('.proj-thumb svg');
+      var link = card.getAttribute('data-link') || '#';
+      var imagesAttr = (card.getAttribute('data-images') || '').trim();
+
+      titleEl.textContent = title;
+      descEl.textContent = desc;
+
+      heroEl.innerHTML = thumbSvg ? thumbSvg.outerHTML.replace('width="34"', 'width="52"').replace('height="34"', 'height="52"') : '';
+
+      tagsEl.innerHTML = '';
+      tagEls.forEach(function (t) {
+        var span = document.createElement('span');
+        span.className = 'tag';
+        span.textContent = t.textContent;
+        tagsEl.appendChild(span);
+      });
+
+      galleryEl.innerHTML = '';
+      if (imagesAttr) {
+        imagesAttr.split(',').forEach(function (src) {
+          var img = document.createElement('img');
+          img.src = src.trim();
+          img.alt = title;
+          galleryEl.appendChild(img);
+        });
+      } else {
+        for (var i = 0; i < 2; i++) {
+          var ph = document.createElement('div');
+          ph.className = 'ph';
+          ph.textContent = 'Imagem do projeto em breve';
+          galleryEl.appendChild(ph);
+        }
+      }
+
+      linkEl.href = link;
+
+      lastFocused = document.activeElement;
+      overlay.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      closeBtn.focus();
+    }
+
+    function closeModal() {
+      overlay.classList.remove('open');
+      document.body.style.overflow = '';
+      if (lastFocused) lastFocused.focus();
+    }
+
+    document.querySelectorAll('.proj-card').forEach(function (card) {
+      card.addEventListener('click', function () {
+        openModalFromCard(card);
+      });
+      card.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          openModalFromCard(card);
+        }
+      });
+    });
+
+    closeBtn.addEventListener('click', closeModal);
+    overlay.addEventListener('click', function (e) {
+      if (e.target === overlay) closeModal();
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && overlay.classList.contains('open')) closeModal();
+    });
+  })();
+</script>
 
 </body>
 </html>
