@@ -218,6 +218,7 @@
     top:0;left:14%;right:0;bottom:14%;
     border:2px solid var(--teal);
     border-radius:18px;
+    animation:floatSquare 6s ease-in-out infinite;
   }
   .hero-art .front{
     position:absolute;
@@ -227,6 +228,8 @@
       linear-gradient(155deg,var(--teal) 0%,var(--blue) 100%);
     display:flex;align-items:center;justify-content:center;
     overflow:hidden;
+    animation:floatSquare 6s ease-in-out infinite;
+    animation-delay:-3s;
   }
   .hero-art .front::before{
     content:"";
@@ -235,7 +238,7 @@
       radial-gradient(circle at 25% 20%, rgba(255,255,255,0.25), transparent 40%),
       radial-gradient(circle at 80% 75%, rgba(255,255,255,0.15), transparent 45%);
   }
-  .hero-art .code{
+  .hero-art .code,.about-art .code{
     position:relative;
     font-family:'Space Mono',monospace;
     font-size:12.5px;
@@ -243,7 +246,7 @@
     line-height:1.9;
     padding:26px;
   }
-  .hero-art .code .dim{color:rgba(255,255,255,0.55);}
+  .hero-art .code .dim,.about-art .code .dim{color:rgba(255,255,255,0.55);}
 
   /* SECTION SHELL */
   section{padding:88px 32px;}
@@ -298,6 +301,8 @@
     position:absolute;left:22%;top:22%;right:0;bottom:0;
     border-radius:16px;
     background:linear-gradient(160deg,var(--blue),var(--teal));
+    display:flex;align-items:center;justify-content:center;
+    overflow:hidden;
     animation:floatSquare 6s ease-in-out infinite;
     animation-delay:-3s;
   }
@@ -305,7 +310,7 @@
     0%,100%{transform:translate(0,0) rotate(0deg);}
     50%{transform:translate(0,-16px) rotate(2deg);}
   }
-  @media (prefers-reduced-motion: reduce){.about-art .back,.about-art .front{animation:none;}}
+  @media (prefers-reduced-motion: reduce){.about-art .back,.about-art .front,.hero-art .back,.hero-art .front{animation:none;}}
 
   .about-text p{color:var(--muted);font-size:15.5px;margin-bottom:22px;max-width:520px;}
   .checklist{list-style:none;display:flex;flex-direction:column;gap:14px;}
@@ -384,8 +389,8 @@
     background:var(--surface);
     border:1px solid var(--border);
     border-radius:18px;
-    max-width:620px;width:100%;
-    max-height:88vh;
+    max-width:760px;width:100%;
+    max-height:85vh;
     overflow-y:auto;
     position:relative;
     animation:modalIn 0.22s ease;
@@ -405,7 +410,7 @@
   }
   .modal-close:hover{border-color:var(--teal);color:var(--teal);}
   .modal-hero{
-    aspect-ratio:16/9;
+    aspect-ratio:21/8;
     background:linear-gradient(135deg,var(--surface-alt),#101214);
     display:flex;align-items:center;justify-content:center;
     color:var(--teal-deep);
@@ -431,6 +436,7 @@
   .modal-actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:6px;}
   @media (max-width:520px){
     .modal-box{max-height:92vh;}
+    .modal-hero{aspect-ratio:16/9;}
     .modal-body{padding:22px 20px 26px;}
     .modal-gallery{grid-template-columns:1fr 1fr;}
   }
@@ -668,7 +674,18 @@
     <div class="about-grid">
       <div class="about-art">
         <div class="back"></div>
-        <div class="front"></div>
+        <div class="front">
+          <div class="code">
+            <div><span class="dim">01</span> sobre = {</div>
+            <div><span class="dim">02</span>&nbsp;&nbsp;nome: "Emanuele",</div>
+            <div><span class="dim">03</span>&nbsp;&nbsp;foco: "evoluir sempre",</div>
+            <div><span class="dim">04</span>&nbsp;&nbsp;valores: [</div>
+            <div><span class="dim">05</span>&nbsp;&nbsp;&nbsp;&nbsp;"curiosidade",</div>
+            <div><span class="dim">06</span>&nbsp;&nbsp;&nbsp;&nbsp;"dedicação"</div>
+            <div><span class="dim">07</span>&nbsp;&nbsp;]</div>
+            <div><span class="dim">08</span> }</div>
+          </div>
+        </div>
       </div>
       <div class="about-text">
         <span class="eyebrow">sobre mim</span>
