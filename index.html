@@ -346,6 +346,12 @@
     display:flex;align-items:center;justify-content:center;
     color:var(--teal-deep);
     position:relative;
+    overflow:hidden;
+  }
+  .proj-thumb img{
+    position:absolute;inset:0;
+    width:100%;height:100%;
+    object-fit:cover;
   }
   .proj-thumb .tag-float{
     position:absolute;top:14px;left:14px;
@@ -355,6 +361,7 @@
     border:1px solid var(--border);
     padding:4px 10px;border-radius:6px;
     color:var(--muted);
+    z-index:1;
   }
   .proj-body{padding:20px 22px;}
   .proj-body h3{font-size:16px;margin-bottom:12px;}
@@ -422,10 +429,10 @@
   .modal-body p{font-size:14.5px;color:var(--muted);margin-bottom:20px;}
   .modal-body .tags{margin-bottom:22px;}
   .modal-gallery{
-    display:grid;grid-template-columns:repeat(2,1fr);gap:12px;
+    display:grid;grid-template-columns:repeat(3,1fr);gap:12px;
     margin-bottom:22px;
   }
-  .modal-gallery img{width:100%;height:100%;object-fit:cover;border-radius:10px;display:block;}
+  .modal-gallery img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:10px;display:block;}
   .modal-gallery .ph{
     aspect-ratio:4/3;border-radius:10px;
     border:1.5px dashed var(--border);
@@ -711,7 +718,10 @@
     </div>
     <div class="proj-grid">
       <div class="proj-card" tabindex="0" role="button" aria-haspopup="dialog"
-           data-link="https://github.com/emanuelekm" data-images=""
+           data-link="https://github.com/emanuelekm"
+           data-cover="assets/logo-card.png"
+           data-images="assets/librarium-logo.png,assets/login.png,assets/inicio-admin.png,assets/banco-relacao.png,assets/alterar-acervo.png"
+           data-pdf="assets/manual-librarium.pdf"
            data-desc="Aplicação desenvolvida de um sistema desktop para gerenciamento de biblioteca, com foco no controle de usuários, acervo e empréstimos.">
         <div class="proj-thumb"><span class="tag-float">01</span>
           <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 13h3"/></svg>
@@ -723,7 +733,7 @@
         </div>
       </div>
       <div class="proj-card" tabindex="0" role="button" aria-haspopup="dialog"
-           data-link="https://github.com/emanuelekm" data-images=""
+           data-link="https://github.com/emanuelekm" data-images="" data-cover="" data-pdf=""
            data-desc="Solução desenvolvida em n8n que monitora ocorrências, envia notificações, gera protocolos e utiliza Inteligência Artificial para agilizar operações de atendimento e gestão de processos.">
         <div class="proj-thumb"><span class="tag-float">02</span>
           <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a13 13 0 0 1 0 18a13 13 0 0 1 0-18"/></svg>
@@ -806,6 +816,7 @@
       <div class="modal-gallery" id="modalGallery"></div>
       <div class="modal-actions">
         <a href="#" id="modalLink" class="btn btn-outline" target="_blank" rel="noopener">Ver no GitHub →</a>
+        <a href="#" id="modalPdf" class="btn btn-solid" target="_blank" rel="noopener" style="display:none;">Baixar manual (PDF) →</a>
       </div>
     </div>
   </div>
@@ -853,7 +864,22 @@ stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7
     var tagsEl = document.getElementById('modalTags');
     var galleryEl = document.getElementById('modalGallery');
     var linkEl = document.getElementById('modalLink');
+    var pdfEl = document.getElementById('modalPdf');
     var lastFocused = null;
+
+    // Mostra a imagem de capa no card (se data-cover estiver preenchido)
+    document.querySelectorAll('.proj-card').forEach(function (card) {
+      var cover = (card.getAttribute('data-cover') || '').trim();
+      if (cover) {
+        var thumb = card.querySelector('.proj-thumb');
+        var icon = thumb.querySelector('svg');
+        if (icon) icon.remove();
+        var img = document.createElement('img');
+        img.src = cover;
+        img.alt = card.querySelector('h3') ? card.querySelector('h3').textContent : '';
+        thumb.appendChild(img);
+      }
+    });
 
     function openModalFromCard(card) {
       var title = card.querySelector('h3') ? card.querySelector('h3').textContent : '';
@@ -861,12 +887,18 @@ stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7
       var tagEls = card.querySelectorAll('.tags .tag');
       var thumbSvg = card.querySelector('.proj-thumb svg');
       var link = card.getAttribute('data-link') || '#';
+      var cover = (card.getAttribute('data-cover') || '').trim();
+      var pdf = (card.getAttribute('data-pdf') || '').trim();
       var imagesAttr = (card.getAttribute('data-images') || '').trim();
 
       titleEl.textContent = title;
       descEl.textContent = desc;
 
-      heroEl.innerHTML = thumbSvg ? thumbSvg.outerHTML.replace('width="34"', 'width="52"').replace('height="34"', 'height="52"') : '';
+      if (cover) {
+        heroEl.innerHTML = '<img src="' + cover + '" alt="' + title + '" style="width:100%;height:100%;object-fit:cover;">';
+      } else {
+        heroEl.innerHTML = thumbSvg ? thumbSvg.outerHTML.replace('width="34"', 'width="52"').replace('height="34"', 'height="52"') : '';
+      }
 
       tagsEl.innerHTML = '';
       tagEls.forEach(function (t) {
@@ -894,6 +926,13 @@ stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7
       }
 
       linkEl.href = link;
+
+      if (pdf) {
+        pdfEl.href = pdf;
+        pdfEl.style.display = 'inline-flex';
+      } else {
+        pdfEl.style.display = 'none';
+      }
 
       lastFocused = document.activeElement;
       overlay.classList.add('open');
