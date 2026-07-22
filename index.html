@@ -396,8 +396,8 @@
     background:var(--surface);
     border:1px solid var(--border);
     border-radius:18px;
-    max-width:760px;width:100%;
-    max-height:85vh;
+    max-width:980px;width:100%;
+    max-height:92vh;
     overflow-y:auto;
     position:relative;
     animation:modalIn 0.22s ease;
@@ -432,7 +432,51 @@
     display:grid;grid-template-columns:repeat(3,1fr);gap:12px;
     margin-bottom:22px;
   }
-  .modal-gallery img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:10px;display:block;}
+  .modal-gallery img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:10px;display:block;cursor:zoom-in;transition:transform 0.2s,box-shadow 0.2s;}
+  .modal-gallery img:hover{transform:scale(1.03);box-shadow:0 8px 32px rgba(0,0,0,0.4);}
+
+  /* ── LIGHTBOX ── */
+  .lightbox{
+    position:fixed;inset:0;z-index:400;
+    background:rgba(0,0,0,0.92);
+    backdrop-filter:blur(6px);
+    display:none;
+    align-items:center;justify-content:center;
+    padding:24px;
+    cursor:zoom-out;
+  }
+  .lightbox.open{display:flex;}
+  .lightbox img{
+    max-width:92vw;max-height:88vh;
+    object-fit:contain;
+    border-radius:12px;
+    box-shadow:0 24px 80px rgba(0,0,0,0.6);
+    animation:modalIn 0.2s ease;
+    cursor:default;
+  }
+  .lightbox-close{
+    position:fixed;top:20px;right:20px;
+    width:40px;height:40px;border-radius:10px;
+    background:rgba(255,255,255,0.1);
+    border:1px solid rgba(255,255,255,0.2);
+    color:#fff;font-size:1.2rem;
+    display:flex;align-items:center;justify-content:center;
+    cursor:pointer;
+    transition:background 0.2s;
+  }
+  .lightbox-close:hover{background:rgba(255,255,255,0.2);}
+  .lightbox-nav{
+    position:fixed;top:50%;transform:translateY(-50%);
+    width:44px;height:44px;border-radius:50%;
+    background:rgba(255,255,255,0.1);
+    border:1px solid rgba(255,255,255,0.2);
+    color:#fff;font-size:1.2rem;
+    display:flex;align-items:center;justify-content:center;
+    cursor:pointer;transition:background 0.2s;
+  }
+  .lightbox-nav:hover{background:rgba(255,255,255,0.22);}
+  .lightbox-prev{left:16px;}
+  .lightbox-next{right:16px;}
   .modal-gallery .ph{
     aspect-ratio:4/3;border-radius:10px;
     border:1.5px dashed var(--border);
@@ -964,6 +1008,70 @@ stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7
     });
     document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape' && overlay.classList.contains('open')) closeModal();
+    });
+  })();
+</script>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="lightboxClose" aria-label="Fechar">✕</button>
+  <button class="lightbox-nav lightbox-prev" id="lightboxPrev" aria-label="Anterior">‹</button>
+  <img id="lightboxImg" src="" alt="" />
+  <button class="lightbox-nav lightbox-next" id="lightboxNext" aria-label="Próxima">›</button>
+</div>
+
+<script>
+  (function () {
+    var lightbox = document.getElementById('lightbox');
+    var lightboxImg = document.getElementById('lightboxImg');
+    var lightboxClose = document.getElementById('lightboxClose');
+    var lightboxPrev = document.getElementById('lightboxPrev');
+    var lightboxNext = document.getElementById('lightboxNext');
+    var currentImages = [];
+    var currentIndex = 0;
+
+    function openLightbox(imgs, index) {
+      currentImages = imgs;
+      currentIndex = index;
+      lightboxImg.src = currentImages[currentIndex];
+      lightbox.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      updateNav();
+    }
+
+    function closeLightbox() {
+      lightbox.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    function updateNav() {
+      lightboxPrev.style.display = currentImages.length > 1 ? 'flex' : 'none';
+      lightboxNext.style.display = currentImages.length > 1 ? 'flex' : 'none';
+    }
+
+    function goTo(index) {
+      currentIndex = (index + currentImages.length) % currentImages.length;
+      lightboxImg.src = currentImages[currentIndex];
+    }
+
+    // Delegação: captura cliques em imagens da galeria dinamicamente
+    document.getElementById('modalGallery').addEventListener('click', function (e) {
+      if (e.target.tagName === 'IMG') {
+        var imgs = Array.from(document.querySelectorAll('#modalGallery img')).map(function (i) { return i.src; });
+        var index = imgs.indexOf(e.target.src);
+        openLightbox(imgs, index >= 0 ? index : 0);
+      }
+    });
+
+    lightboxClose.addEventListener('click', closeLightbox);
+    lightboxPrev.addEventListener('click', function (e) { e.stopPropagation(); goTo(currentIndex - 1); });
+    lightboxNext.addEventListener('click', function (e) { e.stopPropagation(); goTo(currentIndex + 1); });
+    lightbox.addEventListener('click', function (e) { if (e.target === lightbox) closeLightbox(); });
+    document.addEventListener('keydown', function (e) {
+      if (!lightbox.classList.contains('open')) return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft') goTo(currentIndex - 1);
+      if (e.key === 'ArrowRight') goTo(currentIndex + 1);
     });
   })();
 </script>
