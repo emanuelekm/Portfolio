@@ -322,7 +322,12 @@
     display:flex;align-items:center;justify-content:center;
   }
 
-  @media (max-width:820px){.about-grid{grid-template-columns:1fr;}.about-art{max-width:320px;}}
+  @media (max-width:820px){.about-grid{grid-template-columns:1fr;}.about-art{max-width:420px;margin:0 auto;width:100%;}}
+
+  @media (max-width:820px){
+    .about-art .back{top:0;left:14%;right:0;bottom:14%;}
+    .about-art .front{left:0;top:12%;right:14%;bottom:0;}
+  }
 
   /* PORTFOLIO */
   .proj-grid{
@@ -591,7 +596,7 @@
     .hero-ctas .btn,.hero-ctas a{flex:1 1 auto;justify-content:center;text-align:center;}
     .cta-ctas .btn{flex:1 1 auto;justify-content:center;text-align:center;}
     .foot-grid{flex-direction:column;}
-    .about-art{max-width:260px;}
+    .about-art{max-width:420px;}
     .proj-thumb svg{width:28px;height:28px;}
   }
   @media (max-width:400px){
