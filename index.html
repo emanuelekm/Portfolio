@@ -489,6 +489,24 @@
     font-family:'Space Mono',monospace;font-size:11px;color:var(--muted);
     text-align:center;padding:8px;
   }
+
+  .modal-gallery .video-soon{
+    aspect-ratio:16/9;
+    grid-column: 1 / -1;
+    border-radius:10px;
+    border:1.5px dashed var(--teal);
+    background: linear-gradient(135deg, rgba(45,212,191,0.05), rgba(59,130,246,0.05));
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    gap:10px;padding:24px;text-align:center;
+  }
+  .video-soon-icon{
+    width:48px;height:48px;border-radius:50%;
+    background:rgba(45,212,191,0.12);
+    display:flex;align-items:center;justify-content:center;
+    color:var(--teal);font-size:1.4rem;
+  }
+  .video-soon-label{font-size:13px;font-weight:600;color:var(--ink);}
+  .video-soon-sub{font-size:11.5px;color:var(--muted);}
   .modal-actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:6px;}
   @media (max-width:520px){
     .modal-box{max-height:92vh;}
@@ -782,7 +800,11 @@
         </div>
       </div>
       <div class="proj-card" tabindex="0" role="button" aria-haspopup="dialog"
-           data-link="https://github.com/emanuelekm" data-images="" data-cover="" data-pdf=""
+           data-link="https://github.com/emanuelekm"
+           data-cover="assets/capa-automacao.png"
+           data-images="assets/capa-automacao.png"
+           data-pdf="assets/apresentacao-automacao.pdf"
+           data-video-soon="true"
            data-desc="Solução desenvolvida em n8n que monitora ocorrências, envia notificações, gera protocolos e utiliza Inteligência Artificial para agilizar operações de atendimento e gestão de processos.">
         <div class="proj-thumb"><span class="tag-float">02</span>
           <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a13 13 0 0 1 0 18a13 13 0 0 1 0-18"/></svg>
@@ -939,6 +961,7 @@ stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7
       var cover = (card.getAttribute('data-cover') || '').trim();
       var pdf = (card.getAttribute('data-pdf') || '').trim();
       var imagesAttr = (card.getAttribute('data-images') || '').trim();
+      var videoSoon = card.getAttribute('data-video-soon') === 'true';
 
       titleEl.textContent = title;
       descEl.textContent = desc;
@@ -972,6 +995,13 @@ stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7
           ph.textContent = 'Imagem do projeto em breve';
           galleryEl.appendChild(ph);
         }
+      }
+
+      if (videoSoon) {
+        var vc = document.createElement('div');
+        vc.className = 'video-soon';
+        vc.innerHTML = '<div class="video-soon-icon">▶</div><p class="video-soon-label">Vídeo demonstrativo em breve</p><p class="video-soon-sub">Estou finalizando a gravação — em breve você poderá assistir o projeto em ação.</p>';
+        galleryEl.appendChild(vc);
       }
 
       linkEl.href = link;
