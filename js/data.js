@@ -29,7 +29,7 @@ const projects = [
   {
   index: "03",
   title: "Sistema de Gerenciamento de Bibliotecas",
-  shortDescription: "Sistema de gerenciamento Desktop",
+  shortDescription: "Sistema Desktop",
   description: "Sistema desenvolvido em C# com Windows Forms e MySQL para automatizar o gerenciamento de uma biblioteca, permitindo o controle de usuários, empréstimos, devoluções e informações dos livros.",
   objective: "Desenvolver uma aplicação completa para praticar programação orientada a objetos, integração com banco de dados, controle de acesso e desenvolvimento de sistemas desktop.",
   tech: ["C#", "Windows Forms", "MySQL"],
@@ -43,7 +43,7 @@ const projects = [
   ],
   link: null,
   demo: null,
-  image: "assets/project-biblioteca.png",
+  image: "assets/project-portfolio.svg",
 },
 ];
 
