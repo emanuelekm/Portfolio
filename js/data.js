@@ -12,7 +12,7 @@ const projects = [
     features: ["Processamento de ordens de serviço", "Geração de respostas com IA", "Validação automática das respostas", "Organização dos resultados em planilha"],
     link: "https://github.com/emanuelekm/Automacao_N8N",
     demo: null,
-    image: "assets/project-automation.svg",
+    image: "assets/automacao.png",
   },
   {
     index: "02",
@@ -24,7 +24,7 @@ const projects = [
     features: ["Análise de resultados", "Identificação de níveis de defeitos", "Indicadores de qualidade", "Acompanhamento de dados de P&D"],
     link: null,
     demo: null,
-    image: "assets/project-bi.svg",
+    image: "assets/powerbi.png",
   },
   {
   index: "03",
@@ -43,7 +43,7 @@ const projects = [
   ],
   link: null,
   demo: null,
-  image: "assets/project-portfolio.svg",
+  image: "assets/gerenciamento.png",
 },
 ];
 
