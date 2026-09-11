@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 500">
+<defs><linearGradient id="g" x1="0%" y1="20%" x2="100%" y2="80%"><stop offset="0%" stop-color="#f6dc3b"/><stop offset="52%" stop-color="#ff7a1a"/><stop offset="100%" stop-color="#e85a9b"/></linearGradient><radialGradient id="bg"><stop offset="0%" stop-color="#29262d"/><stop offset="100%" stop-color="#151318"/></radialGradient></defs>
+<rect width="660" height="500" rx="40" fill="url(#bg)"/><circle cx="580" cy="75" r="100" fill="url(#g)" opacity=".12"/><circle cx="85" cy="425" r="120" fill="#e85a9b" opacity=".07"/><rect x="105" y="105" width="450" height="285" rx="30" fill="#fff" opacity=".94"/><path d="M165 180h160M165 225h110M165 270h135" stroke="#27242a" stroke-width="12" stroke-linecap="round" opacity=".18"/><path d="M390 175l42 42-42 42M350 175l-42 42 42 42" stroke="url(#g)" stroke-width="15" fill="none" stroke-linecap="round" stroke-linejoin="round"/><rect x="150" y="315" width="365" height="18" rx="9" fill="url(#g)" opacity=".8"/>
+<text x="60" y="460" fill="#fff" opacity=".75" font-family="Arial, sans-serif" font-size="18" letter-spacing="2">FORMAÇÃO PRÁTICA</text>
+</svg>

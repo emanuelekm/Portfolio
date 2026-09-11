@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 500">
+<defs><linearGradient id="g" x1="0%" y1="20%" x2="100%" y2="80%"><stop offset="0%" stop-color="#f6dc3b"/><stop offset="52%" stop-color="#ff7a1a"/><stop offset="100%" stop-color="#e85a9b"/></linearGradient><radialGradient id="bg"><stop offset="0%" stop-color="#29262d"/><stop offset="100%" stop-color="#151318"/></radialGradient></defs>
+<rect width="660" height="500" rx="40" fill="url(#bg)"/><circle cx="580" cy="75" r="100" fill="url(#g)" opacity=".12"/><circle cx="85" cy="425" r="120" fill="#e85a9b" opacity=".07"/><rect x="110" y="120" width="440" height="280" rx="28" fill="#fff" opacity=".94"/><path d="M165 340V250M250 340V205M335 340V165M420 340V230M505 340V185" stroke="url(#g)" stroke-width="38" stroke-linecap="round"/><path d="M145 165h370" stroke="#27242a" stroke-width="8" opacity=".12"/><circle cx="165" cy="250" r="9" fill="#27242a"/><circle cx="250" cy="205" r="9" fill="#27242a"/><circle cx="335" cy="165" r="9" fill="#27242a"/>
+<text x="60" y="460" fill="#fff" opacity=".75" font-family="Arial, sans-serif" font-size="18" letter-spacing="2">DADOS + BI</text>
+</svg>

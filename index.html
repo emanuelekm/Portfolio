@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Emanuele Kmiecik | Portfólio</title>
+  <link rel="icon" type="image/svg+xml" href="assets/star.svg" />
+  <meta name="description" content="Portfólio de Emanuele Kmiecik, estudante de Engenharia de Software e Técnica em Desenvolvimento de Sistemas, com projetos em desenvolvimento, automação, dados e Inteligência Artificial." />
+  <meta name="author" content="Emanuele Kmiecik" />
+  <meta property="og:site_name" content="Emanuele Kmiecik" />
+  <meta property="og:type" content="profile" />
+  <meta property="og:title" content="Emanuele Kmiecik | Estudante de Engenharia de Software" />
+  <meta property="og:description" content="Portfólio de Emanuele Kmiecik, estudante de Engenharia de Software e Técnica em Desenvolvimento de Sistemas." />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="stylesheet" href="css/style.css" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Emanuele Kmiecik",
+    "jobTitle": "Estudante de Engenharia de Software",
+    "address": { "@type": "PostalAddress", "addressRegion": "Paraná", "addressCountry": "BR" },
+    "sameAs": ["https://github.com/emanuelekm"]
+  }
+  </script>
+</head>
+<body>
+
+  <!-- NAV -->
+  <header class="site-nav" id="siteNav">
+    <nav class="nav-inner" aria-label="Navegação principal">
+      <a href="#home" class="brand">
+        <span class="brand-mark bg-brand-gradient">&lt;&gt;</span>
+        <span class="brand-name">Emanuele Kmiecik</span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#projetos">Projetos</a></li>
+        <li><a href="#sobre">Sobre</a></li>
+        <li><a href="#habilidades">Tecnologias</a></li>
+        <li><a href="#contato">Contato</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button type="button" class="icon-btn" id="themeToggle" aria-label="Ativar modo escuro">
+          <svg id="iconMoon" class="icon-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"/></svg>
+          <svg id="iconSun" class="icon-4 hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+        </button>
+        <a href="#contato" class="nav-cta bg-brand-gradient">Entre em contato</a>
+        <button type="button" class="menu-btn" id="menuToggle" aria-expanded="false" aria-controls="menu-mobile" aria-label="Abrir menu">
+          <svg id="iconMenu" class="icon-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/></svg>
+          <svg id="iconX" class="icon-5 hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+    </nav>
+
+    <div id="menu-mobile" class="mobile-menu">
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#projetos">Projetos</a></li>
+        <li><a href="#sobre">Sobre</a></li>
+        <li><a href="#habilidades">Tecnologias</a></li>
+        <li><a href="#contato">Contato</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section id="home" class="hero">
+      <div class="hero-bg" aria-hidden="true">
+        <div class="hero-blob-1 bg-brand-gradient animate-float"></div>
+        <div class="hero-blob-2 bg-soft-gradient"></div>
+      </div>
+
+      <div class="container hero-grid hero-centered">
+        <div class="hero-content">
+          <div class="reveal hero-availability">
+            <span class="badge gradient-border">
+              <span class="badge-dot bg-brand-gradient" aria-hidden="true"></span>
+              Disponível para estágio em desenvolvimento de software
+            </span>
+          </div>
+
+          <div class="reveal" style="transition-delay:80ms">
+            <h1 class="hero-title">
+              <span id="typingText" aria-label="Olá, eu sou Emanuele Kmiecik"></span><span class="typing-cursor" aria-hidden="true"></span>
+            </h1>
+          </div>
+
+          <div class="reveal" style="transition-delay:160ms">
+            <p class="hero-role">Estudante de Engenharia de Software</p>
+          </div>
+
+          <div class="reveal" style="transition-delay:240ms">
+            <p class="hero-desc">Técnica em Desenvolvimento de Sistemas, com conhecimentos em desenvolvimento de software, automação e soluções com IA.</p>
+          </div>
+
+          <div class="reveal" style="transition-delay:320ms">
+            <div class="hero-actions">
+              <a href="#projetos" class="btn-primary bg-brand-gradient">
+                Ver meus projetos
+                <svg class="icon-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJETOS -->
+    <section id="projetos">
+      <div class="container">
+        <div class="reveal" style="max-width:42rem">
+          <span class="section-title-tag code-tag">
+            <span class="line bg-brand-gradient" aria-hidden="true"></span>
+            Portfólio
+          </span>
+          <h2 class="section-heading">Projetos em destaque</h2>
+          
+        </div>
+
+        <div class="projects-grid" id="projectsGrid"></div>
+      </div>
+    </section>
+
+    <!-- SOBRE -->
+    <section id="sobre" class="about-section bg-soft-gradient">
+      <div class="container about-grid about-grid-single">
+<div>
+          <div class="reveal">
+            <span class="section-title-tag code-tag">
+              <span class="line bg-brand-gradient" aria-hidden="true"></span>
+              Quem sou
+            </span>
+            <h2 class="section-heading">Sobre mim</h2>
+          </div>
+          <div class="reveal" style="transition-delay:90ms">
+            <div class="about-text">
+              <p>Sou estudante de Engenharia de Software e Técnica em Desenvolvimento de Sistemas, atualmente construindo minha carreira na área de tecnologia.</p>
+              <p>Tenho interesse principalmente em desenvolvimento de sistemas, automação de processos, análise de dados e Inteligência Artificial.</p>
+              <p>Minha experiência prática também envolve rotinas administrativas, organização de informações, elaboração e acompanhamento de dashboards, análise de dados e apoio a projetos de Pesquisa e Desenvolvimento.</p>
+              
+            </div>
+
+
+            <!-- TECNOLOGIAS -->
+
+            <section id="habilidades" class="about-technologies">
+              <div class="container">
+                <div class="reveal technologies-heading">
+                  <span class="section-title-tag code-tag">
+                    <span class="line bg-brand-gradient" aria-hidden="true"></span>
+                    Tecnologias e ferramentas
+                    <span class="line bg-brand-gradient" aria-hidden="true"></span>
+                  </span>
+                  
+                </div>
+
+                <div class="skills-grid" id="skillsGrid"></div>
+              </div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTATO -->
+    <section id="contato" class="contact-section">
+      <div class="container">
+        <div class="reveal contact-inner">
+          <span class="code-tag"></span>
+          <h2 class="contact-heading">Vamos criar <span class="text-gradient">algo juntos?</span></h2>
+          <p class="contact-desc">Disponível para estágio em desenvolvimento de software, construindo projetos e contribuindo com soluções através da tecnologia.</p>
+
+          <div class="contact-actions">
+            <a href="mailto:contato@emanuelekmiecik.dev" class="bg-brand-gradient contact-btn-primary">
+              <svg class="icon-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg>
+              Entre em contato
+            </a>
+            <a href="https://github.com/emanuelekm" target="_blank" rel="noreferrer noopener" class="gradient-border contact-btn-secondary">
+              <svg class="icon-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+              GitHub
+            </a>
+            <a href="https://www.linkedin.com/" target="_blank" rel="noreferrer noopener" class="gradient-border contact-btn-secondary">
+              <svg class="icon-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6Z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+              LinkedIn
+            </a>
+          </div>
+
+          <!--
+          <p class="contact-link-line">
+            Portfólio:
+            <a href="https://emanuelekm.github.io/Portfolio/" target="_blank" rel="noreferrer noopener">emanuelekm.github.io/Portfolio</a>
+          </p>
+          -->
+        </div>
+      </div>
+    </section>
+  </main>
+
+
+  <!-- MODAL DE PROJETO -->
+  <div id="projectModal" class="project-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modalProjectTitle">
+    <div class="project-modal-panel">
+      <button type="button" id="projectModalClose" class="project-modal-close" aria-label="Fechar detalhes do projeto">
+        <svg class="icon-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+
+      <div class="project-modal-grid">
+        <div class="modal-content">
+          <span id="modalProjectIndex" class="code-tag"></span>
+          <h2 id="modalProjectTitle" class="modal-project-title"></h2>
+          <p id="modalProjectDescription" class="modal-project-description"></p>
+
+          <div class="modal-section">
+            <h3>Objetivo</h3>
+            <p id="modalProjectObjective"></p>
+          </div>
+
+          <div class="modal-section">
+            <h3>Tecnologias</h3>
+            <ul id="modalProjectTech" class="modal-tech"></ul>
+          </div>
+
+          <div class="modal-section">
+            <h3>Principais funcionalidades</h3>
+            <ul id="modalProjectFeatures" class="modal-features"></ul>
+          </div>
+
+          <div id="modalProjectLinks" class="modal-links"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="container footer-inner">
+      <p>Emanuele Kmiecik © 2026</p>
+    </div>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
