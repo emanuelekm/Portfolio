@@ -10,9 +10,24 @@ const projects = [
     objective: "Automatizar o tratamento e a validação de ordens de serviço, reduzindo tarefas manuais e organizando o fluxo de atendimento.",
     tech: ["n8n", "IA", "GPT", "Google Sheets", "JavaScript", "APIs"],
     features: ["Processamento de ordens de serviço", "Geração de respostas com IA", "Validação automática das respostas", "Organização dos resultados em planilha"],
-    link: "https://github.com/emanuelekm/Automacao_N8N",
+    link: "https://github.com/emanuelekm/Automacao_N8N.git",
     demo: null,
     image: "assets/automacao.png",
+    // Ordem fixa da galeria: visão geral → entrada → processamento → IA → validação → resultados → saída.
+    gallery: [
+      "assets/project_n8n/Worflow N8N.png",                         // 01 — fluxo completo
+      "assets/project_n8n/planilha de dados  - google sheets.png",  // 02 — dados de entrada
+      "assets/project_n8n/Get rows in sheet.png",                   // 03 — leitura da planilha
+      "assets/project_n8n/IA Agent.png",                            // 04 — agente de IA
+      "assets/project_n8n/Code in JavaScript.png",                  // 05 — processamento em JavaScript
+      "assets/project_n8n/if.png",                                 // 06 — decisão do fluxo
+      "assets/project_n8n/Validação.png",                          // 07 — validação
+      "assets/project_n8n/Complet code.png",                       // 08 — código completo
+      "assets/project_n8n/Mensagem gerada pela IA.png",             // 09 — resposta gerada
+      "assets/project_n8n/Resposta FALSO.png",                     // 10 — resultado rejeitado
+      "assets/project_n8n/Resultado da demonstração.png",          // 11 — resultado da execução
+      "assets/project_n8n/Mensagem gerada e enviada por email.png"  // 12 — envio final
+    ],
   },
   {
     index: "02",
@@ -22,9 +37,14 @@ const projects = [
     objective: "Transformar resultados de inspeções em indicadores visuais que facilitem a análise de qualidade e o acompanhamento de processos.",
     tech: ["Power BI", "DAX", "Power Query", "SQL", "Azure Database"],
     features: ["Análise de resultados", "Identificação de níveis de defeitos", "Indicadores de qualidade", "Acompanhamento de dados de P&D"],
-    link: null,
+    link: "https://github.com/emanuelekm/packaging_quality_analytics.git",
     demo: null,
     image: "assets/powerbi.png",
+    // Ordem fixa da galeria: visão principal do dashboard.
+    // Novas capturas podem ser adicionadas ao final desta lista sem depender da ordem da pasta.
+    gallery: [
+      "assets/powerbi.png" // 01 — visão principal do dashboard
+    ],
   },
   {
   index: "03",
@@ -41,9 +61,18 @@ const projects = [
     "Gerenciamento de sessões",
     "Geração de relatórios em PDF"
   ],
-  link: null,
+  link: "https://github.com/emanuelekm/GerenciamentoBiblioteca.git",
   demo: null,
   image: "assets/gerenciamento.png",
+  // Ordem fixa da galeria: acesso → tela principal → gerenciamento → banco → identidade do sistema.
+  gallery: [
+    "assets/project_biblioteca/login.png",          // 01 — login
+    "assets/project_biblioteca/inicio-admin.png",   // 02 — painel inicial do administrador
+    "assets/project_biblioteca/alterar-acervo.png", // 03 — gerenciamento do acervo
+    "assets/project_biblioteca/banco-relacao.png",  // 04 — relação do banco de dados
+    "assets/project_biblioteca/librarium-logo.png", // 05 — Librarium
+    "assets/project_biblioteca/logo-card.png"       // 06 — identidade visual
+  ],
 },
 ];
 

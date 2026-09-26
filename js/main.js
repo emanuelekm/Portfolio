@@ -67,6 +67,7 @@ function setupProjectModal() {
   const modalTech = document.getElementById("modalProjectTech");
   const modalFeatures = document.getElementById("modalProjectFeatures");
   const modalLinks = document.getElementById("modalProjectLinks");
+  const modalGallery = document.getElementById("modalProjectGallery");
 
   if (!modal) return;
 
@@ -80,6 +81,13 @@ function setupProjectModal() {
     modalObjective.textContent = p.objective;
     modalTech.innerHTML = p.tech.map((t) => `<li>${t}</li>`).join("");
     modalFeatures.innerHTML = p.features.map((f) => `<li><span class="feature-dot bg-brand-gradient"></span>${f}</li>`).join("");
+
+    const gallery = p.gallery?.length ? p.gallery : [p.image];
+    modalGallery.innerHTML = gallery.map((src, i) => `
+      <figure class="modal-gallery-item">
+        <img src="${src}" alt="${p.title} — imagem ${i + 1}" loading="${i === 0 ? "eager" : "lazy"}" decoding="async">
+      </figure>
+    `).join("");
 
     const links = [];
     if (p.link) {
@@ -141,18 +149,27 @@ function setupTyping() {
   if (!target) return;
 
   const text = "Olá, eu sou Emanuele Kmiecik";
+  target.setAttribute("aria-label", text);
+  target.textContent = "";
+
+  // Efeito de digitação simples e confiável: apenas um caractere é
+  // acrescentado por vez, sem animações pesadas ou loops contínuos.
   let index = 0;
+  const speed = window.matchMedia("(max-width: 767px)").matches ? 58 : 72;
+  const startDelay = 350;
 
-  const type = () => {
-    target.textContent = text.slice(0, index);
-    if (index < text.length) {
+  window.setTimeout(() => {
+    const timer = window.setInterval(() => {
+      target.textContent = text.slice(0, index + 1);
       index += 1;
-      window.setTimeout(type, index === 1 ? 180 : 125);
-    }
-  };
 
-  window.setTimeout(type, 500);
+      if (index >= text.length) {
+        window.clearInterval(timer);
+      }
+    }, speed);
+  }, startDelay);
 }
+
 
 /* ---------------- nav: scroll state + mobile menu ---------------- */
 
