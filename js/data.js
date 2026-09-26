@@ -21,11 +21,11 @@ const projects = [
       "assets/project_n8n/IA Agent.png",                            // 04 — agente de IA
       "assets/project_n8n/Code in JavaScript.png",                  // 05 — processamento em JavaScript
       "assets/project_n8n/if.png",                                 // 06 — decisão do fluxo
-      "assets/project_n8n/Validação.png",                          // 07 — validação
+      "assets/project_n8n/Validacao.png",                          // 07 — validação
       "assets/project_n8n/Complet code.png",                       // 08 — código completo
       "assets/project_n8n/Mensagem gerada pela IA.png",             // 09 — resposta gerada
       "assets/project_n8n/Resposta FALSO.png",                     // 10 — resultado rejeitado
-      "assets/project_n8n/Resultado da demonstração.png",          // 11 — resultado da execução
+      "assets/project_n8n/Resultado da demonstracao.png",          // 11 — resultado da execução
       "assets/project_n8n/Mensagem gerada e enviada por email.png"  // 12 — envio final
     ],
   },
