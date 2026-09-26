@@ -113,7 +113,10 @@ h1, h2, h3, h4 {
   border-color: color-mix(in oklab, var(--brand-orange) 45%, transparent);
 }
 
-.gradient-border { position: relative; }
+.gradient-border {
+  position: relative;
+}
+
 .gradient-border::before {
   content: "";
   position: absolute;
@@ -121,9 +124,19 @@ h1, h2, h3, h4 {
   border-radius: inherit;
   padding: 1px;
   background: var(--gradient-brand);
-  /*-webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);*/
+
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+
   -webkit-mask-composite: xor;
+
+  mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+
   mask-composite: exclude;
+
   pointer-events: none;
 }
 
